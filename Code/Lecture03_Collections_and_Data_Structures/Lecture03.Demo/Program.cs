@@ -44,7 +44,8 @@ while (isRunning)
 
 void PrintMenu()
 {
-    Console.WriteLine();
+    Console.ReadKey();
+    Console.Clear();
     Console.WriteLine("1. Add expense");
     Console.WriteLine("2. List expenses");
     Console.WriteLine("3. Find expense by name");

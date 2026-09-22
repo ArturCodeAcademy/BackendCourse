@@ -15,19 +15,16 @@ Console.WriteLine("This does not scale when we need 10, 100, or 1000 values.");
 Console.WriteLine();
 
 Console.WriteLine("2. Arrays have fixed size");
-string[] fixedNames = new string[3];
-fixedNames[0] = "Coffee";
-fixedNames[1] = "Tea";
-fixedNames[2] = "Lunch";
+string[] fixedNames = ["Coffee", "Tea", "Lunch"];
+//fixedNames[0] = "Coffee";
+//fixedNames[1] = "Tea";
+//fixedNames[2] = "Lunch";
 Console.WriteLine("Array length = " + fixedNames.Length);
 Console.WriteLine("fixedNames[0] = " + fixedNames[0]);
 Console.WriteLine();
 
 Console.WriteLine("3. List<T> can grow");
-List<string> names = new List<string>();
-names.Add("Coffee");
-names.Add("Tea");
-names.Add("Lunch");
+List<string> names = ["Coffee", "Tea", "Lunch"];
 Console.WriteLine("List count = " + names.Count);
 Console.WriteLine("names[0] = " + names[0]);
 Console.WriteLine();
@@ -116,9 +113,12 @@ Console.WriteLine();
 
 Console.WriteLine("13. HashSet<T> keeps unique values");
 HashSet<string> categories = new HashSet<string>();
-categories.Add("Food");
-categories.Add("Transport");
-categories.Add("Food");
+Console.WriteLine("Adding Food: " + categories.Add("Food"));
+Console.WriteLine("Adding Transport: " + categories.Add("Transport"));
+Console.WriteLine("Adding Food again: " + categories.Add("Food"));
+//categories.Add("Food");
+//categories.Add("Transport");
+//categories.Add("Food");
 Console.WriteLine("Category count = " + categories.Count);
 foreach (string category in categories)
 {
@@ -157,8 +157,8 @@ Console.WriteLine("A program becomes more useful when it can store and work with
 
 enum ExpenseCategory
 {
-    Food = 1,
-    Transport = 2,
-    Study = 3,
-    Other = 4
+    Food,
+    Transport,
+    Study,
+    Other
 }

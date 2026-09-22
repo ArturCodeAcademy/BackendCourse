@@ -13,6 +13,8 @@ Console.WriteLine("Data file: " + dataFilePath);
 
 while (isRunning)
 {
+    Console.ReadKey();
+    Console.Clear();
     PrintMenu();
     string command = Console.ReadLine();
     Console.WriteLine();

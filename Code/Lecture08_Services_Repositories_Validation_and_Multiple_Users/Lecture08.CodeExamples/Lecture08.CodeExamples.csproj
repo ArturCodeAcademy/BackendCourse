@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Layers\Application\Lecture08.Application.csproj" />
+    <ProjectReference Include="..\Layers\Infrastructure\Lecture08.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

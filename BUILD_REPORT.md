@@ -351,3 +351,230 @@ Non-fatal renderer note: Poppler reported missing display fonts for `Symbol` and
 ## Stop Rule
 
 Lecture 04 is complete. Lecture 05 has not been created.
+
+## Lecture 05 - Classes and Objects
+
+Status: Completed.
+
+Date: 2026-09-21
+Selected SDK: .NET 10.0.302
+Target framework: net10.0
+
+## Files Created
+
+- `Code/Lecture05_Classes_and_Objects/Lecture05.Demo`
+- `Code/Lecture05_Classes_and_Objects/Lecture05.CodeBasics`
+- `Code/Lecture05_Classes_and_Objects/README.md`
+- `PDF/Lecture05_Classes_and_Objects.pdf`
+- `PDF_Sources/Lecture05_Classes_and_Objects/generate_pdf.py`
+
+## Visual Studio Solution
+
+- Solution Folder exists: `Lecture 05 - Classes and Objects`.
+- Demo project inside the Solution Folder: `Lecture05.Demo`.
+- Code walkthrough project inside the Solution Folder: `Lecture05.CodeBasics`.
+
+## Build Checks
+
+Commands executed:
+
+```text
+dotnet restore D:\Projects\BackendCourse\BackendCourse.sln
+dotnet build D:\Projects\BackendCourse\BackendCourse.sln --no-restore
+```
+
+Result:
+
+```text
+Build succeeded.
+0 Warning(s)
+0 Error(s)
+```
+
+## Demo Smoke Tests
+
+- `Lecture05.CodeBasics`: Passed. Demonstrated constructors, properties, methods, private state, static members, object references, a list of objects, and constructor overloads.
+- `Lecture05.Demo`: Passed with add/list/summary/exit flow.
+- JSON persistence verified by reading the generated `data/expenses.json` file from the demo project directory.
+- Temporary smoke-test `data` folders were removed after verification.
+
+## PDF Checks
+
+- PDF generated successfully.
+- PDF location is only under `PDF`.
+- PDF source is under `PDF_Sources`.
+- Page count: 44.
+- Page size: 16:9 landscape.
+- Visual inspection: Passed for title, dictionary problem, properties, constructor, ToString, encapsulation, constructor overloading, before/after comparison, exercise, and final slides.
+- Code blocks are readable.
+- Student Project Increment is included, including the shared database-course schema design task.
+
+Non-fatal renderer note: Poppler reported missing display fonts for `Symbol` and `ArialUnicode`, but rendered PNG pages were produced and inspected successfully.
+
+## Stop Rule
+
+Lecture 05 is complete. Lecture 06 has not been created.
+
+## Lecture 06 - Interfaces and Abstraction
+
+Status: Completed.
+
+Date: 2026-09-21
+Selected SDK: .NET 10.0.302
+Target framework: net10.0
+
+## Files Created
+
+- `Code/Lecture06_Interfaces_and_Abstraction/Lecture06.Demo`
+- `Code/Lecture06_Interfaces_and_Abstraction/Lecture06.CodeBasics`
+- `Code/Lecture06_Interfaces_and_Abstraction/README.md`
+- `PDF/Lecture06_Interfaces_and_Abstraction.pdf`
+- `PDF_Sources/Lecture06_Interfaces_and_Abstraction/generate_pdf.py`
+
+## Visual Studio Solution
+
+- Solution Folder exists: `Lecture 06 - Interfaces and Abstraction`.
+- Demo project inside the Solution Folder: `Lecture06.Demo`.
+- Code walkthrough project inside the Solution Folder: `Lecture06.CodeBasics`.
+
+## Build Checks
+
+```text
+dotnet restore D:\Projects\BackendCourse\BackendCourse.sln
+dotnet build D:\Projects\BackendCourse\BackendCourse.sln --no-restore
+
+Build succeeded.
+0 Warning(s)
+0 Error(s)
+```
+
+## Demo Smoke Tests
+
+- `Lecture06.CodeBasics`: Passed. Demonstrated interface contracts, two notifier implementations, polymorphism using `List<IShape>`, and composition.
+- `Lecture06.Demo`: Passed in both temporary-memory and JSON-file modes with add, list, summary, and exit flows.
+- JSON persistence verified by reading the generated `data/expenses.json` from the demo project directory.
+- Temporary smoke-test data was removed after verification.
+
+## PDF Checks
+
+- PDF generated successfully with 36 pages in 16:9 landscape format.
+- Visual inspection passed for title, storage problem, interface implementation, polymorphism, repository contract, implementation choice, app contract usage, exercise, database increment, and final slides.
+- Code blocks are readable; the shared database-course increment is included.
+
+Non-fatal renderer note: Poppler reported missing display fonts for `Symbol` and `ArialUnicode`, but rendered PNG pages were produced and inspected successfully.
+
+## Stop Rule
+
+Lecture 06 is complete. Lecture 07 has not been created.
+
+## Lecture 07 - From Spaghetti Code to Layers
+
+Status: Completed.
+
+Date: 2026-09-21
+Selected SDK: .NET 10.0.302
+Target framework: net10.0
+
+## Files Created
+
+- `Code/Lecture07_From_Spaghetti_Code_to_Layers/Examples`
+- `Code/Lecture07_From_Spaghetti_Code_to_Layers/Project`
+- `Code/Lecture07_From_Spaghetti_Code_to_Layers/README.md`
+- `PDF/Lecture07_From_Spaghetti_Code_to_Layers.pdf`
+- `PDF_Sources/Lecture07_From_Spaghetti_Code_to_Layers/generate_pdf.py`
+
+## Folder Structure
+
+- `Examples` contains small runnable code examples.
+- `Project` contains the evolving application.
+- `Lecture07.Project` uses `Presentation`, `Application`, `Domain`, and `Infrastructure` folders.
+
+## Visual Studio Solution
+
+- Solution Folder exists: `Lecture 07 - From Spaghetti Code to Layers`.
+- Example project inside the Solution Folder: `Lecture07.CodeExamples`.
+- Layered application project inside the Solution Folder: `Lecture07.Project`.
+
+## Build Checks
+
+```text
+dotnet restore D:\Projects\BackendCourse\BackendCourse.sln
+dotnet build D:\Projects\BackendCourse\BackendCourse.sln --no-restore
+
+Build succeeded.
+0 Warning(s)
+0 Error(s)
+```
+
+## Smoke Tests
+
+- `Lecture07.CodeExamples`: Passed. Demonstrated a message store, application service, and console screen with separated responsibilities.
+- `Lecture07.Project`: Passed with add, list, category filter, summary, and exit command flow.
+- JSON persistence verified by reading the generated data file from `Project/Lecture07.Project/data/expenses.json`.
+- Temporary smoke-test data was removed after verification.
+
+## PDF Checks
+
+- PDF generated successfully with 35 pages in 16:9 landscape format.
+- Visual inspection passed for title, folder structure, spaghetti-code example, layer cards, project map, service validation, presentation input conversion, composition root, refactoring sequence, exercises, and final slides.
+- Code blocks are readable; a shared database-course increment is included.
+
+Non-fatal renderer note: Poppler reported missing display fonts for `Symbol` and `ArialUnicode`, but rendered PNG pages were produced and inspected successfully.
+
+## Stop Rule
+
+Lecture 07 is complete. Lecture 08 has not been created.
+
+
+## Lecture 07 Layout Correction
+
+The nested `Lecture07.CodeExamples` and `Lecture07.Project` directories were removed after review. The requested final layout is now:
+
+```text
+Lecture07_From_Spaghetti_Code_to_Layers
+|-- Examples
+|   |-- Program.cs
+|   `-- Lecture07.CodeExamples.csproj
+`-- Project
+    |-- Program.cs
+    |-- Lecture07.Project.csproj
+    |-- Presentation
+    |-- Application
+    |-- Domain
+    `-- Infrastructure
+```
+
+The solution project paths, README run commands, and PDF folder diagram were updated. The full solution builds with 0 warnings and 0 errors; both relocated applications were smoke-tested.
+
+## Lecture 07 Multi-Project Structure Correction
+
+Lecture 07 now follows the reference solution layout exactly:
+
+- Solution Folder `Layers` contains `Lecture07.Application`, `Lecture07.Domain`, `Lecture07.Infrastructure`, and `Lecture07.Presentation` as separate class-library projects.
+- `Lecture07.CodeExamples` is a separate console project.
+- `Lecture07.Project` is a separate console project that references Application, Infrastructure, and Presentation.
+- The layer projects use project references: Application -> Domain; Infrastructure -> Application + Domain; Presentation -> Application + Domain.
+
+The old single-project layer folders were moved into their own projects. The README and PDF were updated. Full restore/build succeeded with 0 warnings and 0 errors, and both console projects were smoke-tested after the move.
+
+## Lecture 07 Layers Rename
+
+Renamed the Lecture 07 solution folder and filesystem directory from How must be to Layers. Updated project references, solution paths, README, and PDF. Full restore/build succeeded with 0 warnings and 0 errors.
+
+
+## Lecture 08 - Services, Repositories, Validation and Multiple Users
+
+Created the requested multi-project solution structure:
+
+- Layers contains separate Lecture08.Domain, Lecture08.Application, Lecture08.Infrastructure, and Lecture08.Presentation class libraries.
+- Lecture08.CodeExamples is a runnable PBKDF2 hashing demonstration.
+- Lecture08.Project is a multi-user console Expense Tracker.
+- Application services own registration, login, expense validation, and ownership rules.
+- JSON repositories own only persistence. Expense lookup and deletion require the current UserId.
+- Passwords are never persisted as plain text. Pbkdf2PasswordHasher uses a random per-password salt, PBKDF2-SHA256, 210,000 iterations, Base64 storage, and CryptographicOperations.FixedTimeEquals during verification.
+
+Verification completed on 2026-09-21:
+
+- dotnet build BackendCourse.sln: 0 warnings, 0 errors.
+- Lecture08.CodeExamples: verified distinct hashes for the same password, successful correct-password verification, and failed wrong-password verification.
+- Lecture08.Project: registered Alice and Bob, confirmed Bob cannot view Alice's expense, and confirmed Bob cannot delete Alice's expense.

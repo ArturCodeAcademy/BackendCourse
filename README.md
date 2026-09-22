@@ -1,24 +1,12 @@
 # Basics of Internet Technologies 2: Back-end Programming and Database Management
 
-This repository contains the teacher course solution, lecture PDFs, PDF sources, and demo code for the course.
+This repository contains the teacher course solution, lecture PDFs, PDF sources, and runnable demo code.
 
-The course is built gradually. Only one lecture is created and verified at a time. Do not add the next lecture until the previous lecture has been reviewed and approved by the teacher.
+The course is built gradually. Only one lecture is created and verified at a time.
 
 ## Selected .NET SDK
 
-The installed SDKs were checked with:
-
-```text
-dotnet --list-sdks
-```
-
-Selected SDK for this course:
-
-```text
-.NET 10.0.302
-```
-
-Lecture demo projects target `net10.0` unless a later lecture has a specific reason to use another target framework.
+The course uses .NET SDK `10.0.302`. Lecture projects target `net10.0`.
 
 ## Repository Structure
 
@@ -30,42 +18,55 @@ BackendCourse
 |-- FinalProjectRequirements.md
 |-- BUILD_REPORT.md
 |-- Code
-|   |-- Lecture01_Introduction_to_CSharp_and_DotNET`n|   |-- Lecture02_Conditions_Loops_and_Methods`n|   |-- Lecture03_Collections_and_Data_Structures`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ
-|       |-- Lecture01.Demo
-|       `-- Lecture01.CodeBasics`n|   |-- Lecture02_Conditions_Loops_and_Methods`n|   |-- Lecture03_Collections_and_Data_Structures`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ`n|       |-- Lecture02.Demo`n|       `-- Lecture02.CodeBasics`n|   |-- Lecture03_Collections_and_Data_Structures`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ`n|       |-- Lecture03.Demo`n|       `-- Lecture03.CodeBasics`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ`n|       |-- Lecture04.Demo`n|       `-- Lecture04.CodeBasics
+|   |-- Lecture01_Introduction_to_CSharp_and_DotNET
+|   |-- Lecture02_Conditions_Loops_and_Methods
+|   |-- Lecture03_Collections_and_Data_Structures
+|   |-- Lecture04_Files_JSON_Exceptions_and_LINQ
+|   |-- Lecture05_Classes_and_Objects
+|   -- Lecture06_Interfaces_and_Abstraction
 |-- PDF
-|   |-- Lecture01_Introduction_to_CSharp_and_DotNET`n|   |-- Lecture02_Conditions_Loops_and_Methods`n|   |-- Lecture03_Collections_and_Data_Structures`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ
-|       |-- Lecture01.Demo
-|       `-- Lecture01.CodeBasics`n|   |-- Lecture02_Conditions_Loops_and_Methods`n|   |-- Lecture03_Collections_and_Data_Structures`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ`n|       |-- Lecture02.Demo`n|       `-- Lecture02.CodeBasics`n|   |-- Lecture03_Collections_and_Data_Structures`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ`n|       |-- Lecture03.Demo`n|       `-- Lecture03.CodeBasics`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ`n|       |-- Lecture04.Demo`n|       `-- Lecture04.CodeBasics.pdf
+|   |-- Lecture01_Introduction_to_CSharp_and_DotNET.pdf
+|   |-- Lecture02_Conditions_Loops_and_Methods.pdf
+|   |-- Lecture03_Collections_and_Data_Structures.pdf
+|   |-- Lecture04_Files_JSON_Exceptions_and_LINQ.pdf
+|   |-- Lecture05_Classes_and_Objects.pdf
+|   -- Lecture06_Interfaces_and_Abstraction.pdf
 |-- PDF_Sources
-|   |-- Lecture01_Introduction_to_CSharp_and_DotNET`n|   |-- Lecture02_Conditions_Loops_and_Methods`n|   |-- Lecture03_Collections_and_Data_Structures`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ
-|       |-- Lecture01.Demo
-|       `-- Lecture01.CodeBasics`n|   |-- Lecture02_Conditions_Loops_and_Methods`n|   |-- Lecture03_Collections_and_Data_Structures`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ`n|       |-- Lecture02.Demo`n|       `-- Lecture02.CodeBasics`n|   |-- Lecture03_Collections_and_Data_Structures`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ`n|       |-- Lecture03.Demo`n|       `-- Lecture03.CodeBasics`n|   `-- Lecture04_Files_JSON_Exceptions_and_LINQ`n|       |-- Lecture04.Demo`n|       `-- Lecture04.CodeBasics
-`-- Resources
+|   |-- Lecture01_Introduction_to_CSharp_and_DotNET
+|   |-- Lecture02_Conditions_Loops_and_Methods
+|   |-- Lecture03_Collections_and_Data_Structures
+|   |-- Lecture04_Files_JSON_Exceptions_and_LINQ
+|   |-- Lecture05_Classes_and_Objects
+|   -- Lecture06_Interfaces_and_Abstraction
+-- Resources
     |-- Diagrams
     |-- Images
     `-- Database
 ```
 
-All lecture PDFs are stored only in `PDF`.
-All lecture demo code is stored only in `Code`.
+All lecture PDFs are stored only in `PDF`. All runnable lecture code is stored only in `Code`.
 
 ## Teacher Course Solution
 
-`BackendCourse.sln` is the teacher solution used during lectures. Each lecture must be represented by a separate Visual Studio Solution Folder, for example:
+`BackendCourse.sln` is the teacher solution used during lectures. Each lecture has its own Visual Studio Solution Folder and contains two runnable projects:
 
-```text
-Lecture 01 - Introduction to C# and .NET
-|-- Lecture01.Demo
-`-- Lecture01.CodeBasics
-```
+- `LectureNN.Demo` - the evolving course application.
+- `LectureNN.CodeBasics` - a focused, runnable explanation of the lecture concepts.
+
+## Completed Lectures
+
+1. Introduction to C# and .NET
+2. Conditions, Loops and Methods
+3. Collections and Data Structures
+4. Files, JSON, Exceptions and LINQ
+5. Classes and Objects
+6. Interfaces and Abstraction
+7. From Spaghetti Code to Layers
+8. Services, Repositories, Validation and Multiple Users
 
 ## Student Semester Project
 
-Each student creates a separate solution for their own semester project. The student solution is not part of `BackendCourse.sln`.
-
-Students develop one idea throughout the semester. Assessment includes both the evolution of the project and the final backend application.
-
+Each student creates a separate solution for their own semester project. Students develop one idea throughout the semester; assessment includes the project evolution portfolio and the final backend application.
 
 
 
