@@ -63,10 +63,18 @@ All lecture PDFs are stored only in `PDF`. All runnable lecture code is stored o
 6. Interfaces and Abstraction
 7. From Spaghetti Code to Layers
 8. Services, Repositories, Validation and Multiple Users
+9. SQL Access with Dapper
+10. Entity Framework Core Fundamentals
+11. EF Core Relationships and Migrations
+12. HTTP and the First ASP.NET Core Web API
+13. DTOs, Validation and API Design
+14. Real Backend: API, Layers, EF Core and Dependency Injection
+15. Configuration, Error Handling, Identity, Authentication and Final Defense
 
 ## Student Semester Project
 
 Each student creates a separate solution for their own semester project. Students develop one idea throughout the semester; assessment includes the project evolution portfolio and the final backend application.
+
 
 
 

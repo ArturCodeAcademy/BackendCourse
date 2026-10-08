@@ -578,3 +578,9 @@ Verification completed on 2026-09-21:
 - dotnet build BackendCourse.sln: 0 warnings, 0 errors.
 - Lecture08.CodeExamples: verified distinct hashes for the same password, successful correct-password verification, and failed wrong-password verification.
 - Lecture08.Project: registered Alice and Bob, confirmed Bob cannot view Alice's expense, and confirmed Bob cannot delete Alice's expense.
+
+## Lectures 09-15 Completion
+
+Created Lectures 09 through 15 with the same Layers structure: Domain, Application, Infrastructure, Presentation, a focused CodeExamples project, and a separate Project composition root. The sequence evolves the Expense Tracker from Dapper and SQLite to EF Core, migrations, HTTP APIs, DTOs, dependency injection, configuration, centralized errors, and protected endpoints.
+
+Verification: BackendCourse.sln compiles with 0 errors. NuGet emits existing/transitive vulnerability warnings for SQLitePCLRaw.lib.e_sqlite3 and EF design-time dependencies; they remain visible for package-update follow-up.

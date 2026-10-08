@@ -1,0 +1,4 @@
+using Lecture13.Domain; namespace Lecture13.Application;
+public interface IExpenseRepository { IReadOnlyList<Expense> GetForUser(int userId); Expense Add(Expense expense); }
+public class ExpenseService { private readonly IExpenseRepository repository; public ExpenseService(IExpenseRepository repository) => this.repository = repository; public IReadOnlyList<Expense> GetForUser(int userId) => repository.GetForUser(userId); public Expense Create(int userId, string name, decimal amount, string category) { if (amount <= 0) throw new ValidationException("amount", "Amount must be greater than zero."); return repository.Add(new Expense { UserId = userId, Name = name, Amount = amount, Category = category }); } }
+public sealed class ValidationException(string key, string message) : Exception(message) { public string Key { get; } = key; }

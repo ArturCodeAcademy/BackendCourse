@@ -1,0 +1,2 @@
+using Lecture13.Application; using Lecture13.Domain; namespace Lecture13.Infrastructure;
+public class InMemoryExpenseRepository : IExpenseRepository { private readonly List<Expense> items = []; public IReadOnlyList<Expense> GetForUser(int userId) => items.Where(item => item.UserId == userId).ToList(); public Expense Add(Expense expense) { expense.Id = items.Count + 1; items.Add(expense); return expense; } }
