@@ -36,7 +36,7 @@ dotnet run --project .\Lecture09.CodeExamples
 dotnet run --project .\Project
 ~~~
 
-The project creates data/expenses.db beside its executable. The focused project seeds an alice account only to keep the lesson on Dapper rather than repeating Lecture 08 registration.
+The project creates data/expenses.db beside its executable. The Project keeps the complete Register, Login, Logout and PasswordService flow from Lecture 08. The change in this lesson is persistence: Dapper repositories store users and expenses in SQLite instead of JSON.
 
 ## Database-session connection
 
@@ -54,3 +54,4 @@ Explain primary key, foreign key, UNIQUE username, and the CHECK (Amount > 0) co
 3. Restart the project: records remain because they are in SQLite, not a list in memory.
 4. Inspect the DELETE query with Id and UserId. Explain why a different user cannot delete the row.
 5. Replace DapperExpenseRepository with a fake in-memory implementation without changing ExpenseService.
+
