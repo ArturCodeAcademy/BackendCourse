@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Lecture14.Project": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50103;http://localhost:50106"
+    }
+  }
+}
