@@ -26,16 +26,12 @@ By the end of the lesson, a student should be able to:
 
 ### `Lecture10.CodeExamples`: raw database work
 
-This is a small, self-contained console program. It has no menu, layers, user interaction, EF Core or application domain. It uses `Microsoft.Data.Sqlite` directly so students can see the actual building blocks:
+This is a small, self-contained console program. It has no menu, layers or user interaction. It creates a separate `Books` table and intentionally works with the same SQLite file in two ways:
 
-1. connection string;
-2. `SqliteConnection`;
-3. `SqliteCommand`;
-4. command parameters;
-5. `ExecuteNonQueryAsync` for `INSERT`, `UPDATE`, `DELETE`;
-6. `ExecuteReaderAsync` for `SELECT`.
+1. **Raw SQL / ADO.NET**: connection string, `SqliteConnection`, `SqliteCommand`, parameters, `INSERT` and `SELECT` through `ExecuteNonQueryAsync` and `ExecuteReaderAsync`.
+2. **EF Core / LINQ**: `LibraryDbContext`, `DbSet<Book>`, `Where`, `OrderBy`, `SingleOrDefaultAsync`, `Add`, `Remove` and `SaveChangesAsync` for `UPDATE`, `INSERT` and `DELETE`.
 
-It creates a `Books` table so the example is separate from the course project.
+The contrast is deliberate: students first see the SQL string and its parameters, then see EF Core translate LINQ and tracked entity changes into SQL against exactly the same `Books` table.
 
 ### `Project`: EF Core over the course domain
 
@@ -65,6 +61,7 @@ For the raw Code Examples project:
 
 ```powershell
 dotnet add .\Lecture10.CodeExamples package Microsoft.Data.Sqlite
+dotnet add .\Lecture10.CodeExamples package Microsoft.EntityFrameworkCore.Sqlite
 ```
 
 For the EF Core layer:
