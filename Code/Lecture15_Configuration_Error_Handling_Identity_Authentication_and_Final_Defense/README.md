@@ -2,19 +2,32 @@
 
 ## Configuration
 
-Connection strings, JWT keys, external URLs and production settings do not belong in C# source. Use appsettings.json for non-secret defaults, environment variables or secret storage for secrets, and environment-specific settings for deployment.
+Connection strings, JWT keys, external URLs and production settings do not belong in C# source. Use `appsettings.json` for non-secret defaults, environment variables or secret storage for secrets, and environment-specific settings for deployment.
+
+The runnable project reads `Demo:ApplicationName` from `Project/appsettings.json` and returns it from `/health`. This is a deliberately harmless setting. Never place passwords, real tokens or production connection strings in the committed file.
 
 ## Error handling
 
-Endpoints should not each invent their own 500 response. The host uses centralized exception handling. Application throws a meaningful BusinessRuleException; Presentation/host translates it into a safe HTTP response. Do not send stack traces or secrets to clients.
+Endpoints should not each invent their own 500 response. The host uses centralized exception handling. Application throws a meaningful `BusinessRuleException`; Presentation/host translates it into a safe HTTP response. Do not send stack traces or secrets to clients.
 
 ## Authentication and authorization
 
 Authentication answers: who is calling? Authorization answers: may this caller use this resource?
 
-The runnable project uses a tiny X-Demo-User authentication handler only to make the request pipeline visible. It is not production authentication. Replace it with ASP.NET Core Identity plus a real store, secure password hashing, and token or cookie configuration in the final project.
+The runnable project uses a tiny `X-Demo-User` authentication handler only to make the request pipeline visible. It is not production authentication. Replace it with ASP.NET Core Identity plus a real store, secure password hashing, and token or cookie configuration in the final project.
 
-A protected endpoint obtains the user id from claims, never from a request body or query string.
+A protected endpoint obtains the user id from claims, never from a request body or query string. Try these requests:
+
+```powershell
+# 401: no authenticated user
+Invoke-RestMethod http://localhost:50105/api/me/expenses
+
+# 200: only alice's demo expense is returned
+Invoke-RestMethod http://localhost:50105/api/me/expenses -Headers @{ "X-Demo-User" = "alice" }
+
+# 200: a different collection for bob
+Invoke-RestMethod http://localhost:50105/api/me/expenses -Headers @{ "X-Demo-User" = "bob" }
+```
 
 ## Final defense checklist
 
@@ -29,4 +42,5 @@ A protected endpoint obtains the user id from claims, never from a request body 
 ## Assessment connection
 
 Evolution portfolio: 30 percent. It contains the seven milestone states and short explanations of architectural decisions.
+
 Final project: 70 percent. It is a complete backend application with database persistence, API, validation, authentication and a defense demo.
