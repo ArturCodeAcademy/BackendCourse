@@ -1,3 +1,9 @@
-Console.WriteLine("Migration commands:");
-Console.WriteLine("dotnet ef migrations add InitialCreate --project Layers/Infrastructure --startup-project Project");
-Console.WriteLine("dotnet ef database update --project Layers/Infrastructure --startup-project Project");
+Console.WriteLine("Restore the local EF tool:");
+Console.WriteLine("dotnet tool restore");
+Console.WriteLine();
+Console.WriteLine("The InitialCreate migration is already included with this lecture.");
+Console.WriteLine("Apply it to the SQLite database:");
+Console.WriteLine("dotnet tool run dotnet-ef database update --project Layers/Infrastructure --startup-project Project");
+Console.WriteLine();
+Console.WriteLine("After changing the model, create a new migration:");
+Console.WriteLine("dotnet tool run dotnet-ef migrations add AddCategoryDescription --project Layers/Infrastructure --startup-project Project");
