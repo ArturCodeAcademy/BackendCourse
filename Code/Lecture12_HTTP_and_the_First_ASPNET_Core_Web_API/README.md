@@ -7,7 +7,7 @@ The console menu is replaced by HTTP endpoints. Presentation no longer calls Con
 - Domain: Expense data only.
 - Application: Add and retrieve use cases.
 - Infrastructure: current in-memory repository, replaced by EF in later lectures.
-- Presentation: route-to-service translation.
+- Presentation: controllers translate HTTP requests into service calls and HTTP responses.
 - Project: the ASP.NET Core host and dependency registrations.
 
 ## Endpoints
@@ -21,6 +21,16 @@ The console menu is replaced by HTTP endpoints. Presentation no longer calls Con
 
 Run with `dotnet run --project .\Project`. In the Development environment, the browser opens Swagger UI at `/swagger`.
 
+## Controllers and attributes
+
+`Presentation/Controllers/ExpensesController.cs` is the HTTP entry point. It uses the conventional controller style:
+
+- `[ApiController]` enables API behavior, including automatic 400 responses when the request model violates data annotations.
+- `[Route("api/expenses")]` defines the base URL.
+- `[HttpGet]` and `[HttpPost]` define the HTTP verb for each action.
+- `[ProducesResponseType]` documents possible responses for Swagger and for API consumers.
+
+`Program.cs` registers controllers with `AddControllers()` and exposes their attribute routes with `MapControllers()`. `AddApplicationPart(...)` is explicit because the controllers live in the separate Presentation project rather than in the web-host project.
 ## Swagger UI and OpenAPI
 
 - `/swagger` is an interactive page for exploring and calling the API. Open an operation, select **Try it out**, enter data, and select **Execute**.
