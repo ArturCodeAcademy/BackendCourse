@@ -19,7 +19,15 @@ The console menu is replaced by HTTP endpoints. Presentation no longer calls Con
 | GET | /api/expenses/{id} | read one resource | 200 or 404 |
 | POST | /api/expenses | create resource | 201 or 400 |
 
-Run with dotnet run --project .\Project. The browser opens the root route, which confirms that the API is running and lists the available endpoints. Use an HTTP client to call GET and POST API routes.
+Run with `dotnet run --project .\Project`. In the Development environment, the browser opens Swagger UI at `/swagger`.
+
+## Swagger UI and OpenAPI
+
+- `/swagger` is an interactive page for exploring and calling the API. Open an operation, select **Try it out**, enter data, and select **Execute**.
+- `/openapi/v1.json` is the generated machine-readable OpenAPI description used by Swagger UI and client-generation tools.
+- Swagger UI is deliberately enabled only in the Development environment. An application should not automatically expose its internal API map in production.
+
+Swagger describes the HTTP contract; it does not implement business rules. `ExpenseService` still validates the request and the endpoint still returns the appropriate HTTP status code.
 
 ## Guided checks
 
