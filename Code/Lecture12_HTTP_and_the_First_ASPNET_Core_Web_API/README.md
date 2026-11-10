@@ -14,11 +14,12 @@ The console menu is replaced by HTTP endpoints. Presentation no longer calls Con
 
 | Method | Route | Meaning | Success |
 |---|---|---|---|
+| GET | / | API status and available routes | 200 |
 | GET | /api/expenses | read collection | 200 |
 | GET | /api/expenses/{id} | read one resource | 200 or 404 |
 | POST | /api/expenses | create resource | 201 or 400 |
 
-Run with dotnet run --project .\Project. Use an HTTP client to call the routes.
+Run with dotnet run --project .\Project. The browser opens the root route, which confirms that the API is running and lists the available endpoints. Use an HTTP client to call GET and POST API routes.
 
 ## Guided checks
 
