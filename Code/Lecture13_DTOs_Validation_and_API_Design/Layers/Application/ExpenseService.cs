@@ -2,13 +2,6 @@ using Lecture13.Domain;
 
 namespace Lecture13.Application;
 
-public interface IExpenseRepository
-{
-    IReadOnlyList<Expense> GetForUser(int userId);
-    Expense? GetByIdForUser(int userId, int expenseId);
-    Expense Add(Expense expense);
-}
-
 public sealed class ExpenseService
 {
     private readonly IExpenseRepository repository;
@@ -28,24 +21,31 @@ public sealed class ExpenseService
         return repository.GetByIdForUser(userId, expenseId);
     }
 
-    public Expense Create(int userId, string name, decimal amount, string category)
+    public Expense Create(int userId, string? name, decimal amount, string? category)
     {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ValidationException("name", "Name is required.");
+        }
+
         if (amount <= 0)
         {
             throw new ValidationException("amount", "Amount must be greater than zero.");
         }
 
-        return repository.Add(new Expense
+        if (string.IsNullOrWhiteSpace(category))
+        {
+            throw new ValidationException("category", "Category is required.");
+        }
+
+        var expense = new Expense
         {
             UserId = userId,
-            Name = name,
+            Name = name.Trim(),
             Amount = amount,
-            Category = category
-        });
-    }
-}
+            Category = category.Trim()
+        };
 
-public sealed class ValidationException(string key, string message) : Exception(message)
-{
-    public string Key { get; } = key;
+        return repository.Add(expense);
+    }
 }

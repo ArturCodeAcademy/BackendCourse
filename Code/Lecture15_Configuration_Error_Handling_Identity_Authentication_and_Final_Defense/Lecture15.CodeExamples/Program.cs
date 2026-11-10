@@ -1,1 +1,4 @@
-Console.WriteLine("Configuration is external input. Never commit production secrets. Authentication identifies a caller; authorization decides what that caller may do.");
+var message = "Configuration is external input. Never commit production secrets. " +
+              "Authentication identifies a caller; authorization decides what that caller may do.";
+
+Console.WriteLine(message);

@@ -10,12 +10,17 @@ Use Scoped for `DbContext`, repository and service because one HTTP request rece
 
 ## Request path
 
-HTTP request -> Presentation endpoint -> Application service -> repository contract -> EF repository -> SQLite
+HTTP request -> Presentation controller action -> Application service -> repository contract -> EF repository -> SQLite
 
 Responses travel in the reverse direction. An endpoint has no SQL. A repository has no HTTP status code. A service has no `WebApplication`.
 
 The API preserves the contracts from Lecture 13: request DTOs are validated, response DTOs do not expose `UserId`, a `201 Created` response points to a working route, and an expense is always queried by both owner and id.
 
+## Controller structure
+
+`Presentation/Controllers/ExpensesController.cs` owns HTTP concerns. `[HttpGet]` and `[HttpPost]` define the verbs, `[Route(...)]` defines the resource URL, and `[ProducesResponseType]` documents `200`, `201`, `400`, and `404` responses.
+
+`Program.cs` registers the controller assembly with `AddControllers().AddApplicationPart(...)` and enables attribute routes with `MapControllers()`. The explicit application part is needed because Presentation is a separate class library.
 ## Local database
 
 At startup the lesson calls `EnsureCreatedAsync()` so a new student can run this self-contained DI demonstration without first creating a database manually. This is intentionally a disposable local database. In a production continuation, replace it with the migration workflow from Lecture 11.

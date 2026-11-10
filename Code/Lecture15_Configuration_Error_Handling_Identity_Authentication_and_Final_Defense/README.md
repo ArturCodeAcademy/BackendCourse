@@ -8,8 +8,13 @@ The runnable project reads `Demo:ApplicationName` from `Project/appsettings.json
 
 ## Error handling
 
-Endpoints should not each invent their own 500 response. The host uses centralized exception handling. Application throws a meaningful `BusinessRuleException`; Presentation/host translates it into a safe HTTP response. Do not send stack traces or secrets to clients.
+Controller actions should not each invent their own 500 response. The host uses centralized exception handling. Application throws a meaningful `BusinessRuleException`; Presentation/host translates it into a safe HTTP response. Do not send stack traces or secrets to clients.
 
+## Controller structure
+
+`Presentation/Controllers` contains separate HTTP entry points. `ExpensesController` uses `[Authorize]` and reads the authenticated user id from claims. `HealthController` reads the harmless application name through `IConfiguration`. Each action uses `[HttpGet]` and `[ProducesResponseType]` to declare its HTTP contract.
+
+`Program.cs` registers the separate Presentation assembly through `AddControllers().AddApplicationPart(...)` and enables attribute routing via `MapControllers()`.
 ## Authentication and authorization
 
 Authentication answers: who is calling? Authorization answers: may this caller use this resource?

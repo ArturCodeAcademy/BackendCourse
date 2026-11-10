@@ -9,17 +9,29 @@ public sealed class InMemoryExpenseRepository : IExpenseRepository
     {
         ["alice"] =
         [
-            new Expense { Id = 1, Name = "Lunch", Amount = 12.50m, Category = "Food" }
+            new Expense
+            {
+                Id = 1,
+                Name = "Lunch",
+                Amount = 12.50m,
+                Category = "Food"
+            }
         ],
         ["bob"] =
         [
-            new Expense { Id = 2, Name = "Train", Amount = 28.00m, Category = "Travel" }
+            new Expense
+            {
+                Id = 2,
+                Name = "Train",
+                Amount = 28.00m,
+                Category = "Travel"
+            }
         ]
     };
 
     public Task<List<Expense>> GetMineAsync(string userId, CancellationToken cancellationToken)
     {
-        List<Expense> expenses = expensesByUser.TryGetValue(userId, out List<Expense>? items)
+        var expenses = expensesByUser.TryGetValue(userId, out var items)
             ? items.Select(item => new Expense
             {
                 Id = item.Id,

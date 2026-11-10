@@ -22,6 +22,16 @@ A client can bypass a browser form, so server-side validation is mandatory.
 | GET | `/api/users/{userId}/expenses/{expenseId}` | 200 | 404 when the expense is absent or belongs to another user |
 | POST | `/api/users/{userId}/expenses` | 201 with a working `Location` header | 400 for invalid input |
 
+## Controller structure
+
+`Presentation/Controllers/ExpensesController.cs` is the HTTP entry point. Its attributes define the contract:
+
+- `[Route("api/users/{userId:int}/expenses")]` defines the resource URL.
+- `[HttpGet]` and `[HttpPost]` define the verb for each action.
+- `[ProducesResponseType]` documents the possible HTTP responses.
+- `[ApiController]` validates the DTO data annotations before the action method runs.
+
+`Program.cs` uses `AddControllers()` and `MapControllers()`. `AddApplicationPart(...)` explicitly adds the Presentation assembly because the controller is not located in the web-host project.
 ## API decisions
 
 - use nouns in routes, not route names such as `/createExpense`;

@@ -8,7 +8,7 @@ public class CreateExpenseRequest
     [StringLength(100)]
     public string? Name { get; init; }
 
-    [Range(typeof(decimal), "0.01", "1000000")]
+    [Range(0.01, 1_000_000)]
     public decimal Amount { get; init; }
 
     [Required]
