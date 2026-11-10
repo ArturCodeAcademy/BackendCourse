@@ -47,5 +47,5 @@ foreach (Expense expense in await reader.GetWithRelationsForUserAsync(user.Id))
 
 foreach (Expense expense in await reader.GetWithoutRelationsForUserAsync(user.Id))
 {
-	Console.WriteLine($"{expense.User?.Username ?? "Unknown"}: {expense.Name} / {expense.Category?.Name ?? "Unknown"}");
+    Console.WriteLine($"{expense.User?.Username ?? "Unknown"}: {expense.Name} / {expense.Category?.Name ?? "Unknown"}");
 }

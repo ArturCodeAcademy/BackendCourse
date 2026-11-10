@@ -241,6 +241,9 @@ public class Expense
 
     public override string ToString()
     {
-        return Id + ". " + Name + " - " + Amount.ToString("F2", CultureInfo.InvariantCulture) + " EUR - " + Category + " - " + CreatedAt.ToString("yyyy-MM-dd HH:mm");
+        string amountText = Amount.ToString("F2", CultureInfo.InvariantCulture);
+        string dateText = CreatedAt.ToString("yyyy-MM-dd HH:mm");
+
+        return $"{Id}. {Name} - {amountText} EUR - {Category} - {dateText}";
     }
 }

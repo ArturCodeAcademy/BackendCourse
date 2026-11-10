@@ -22,7 +22,10 @@ public class ConsoleMenu
         {
             if (currentUser is null)
             {
-                if (!RunGuestMenu()) return;
+                if (!RunGuestMenu())
+                {
+                    return;
+                }
             }
             else if (!RunUserMenu())
             {
@@ -42,10 +45,17 @@ public class ConsoleMenu
 
         switch (Console.ReadLine())
         {
-            case "1": Register(); return true;
-            case "2": Login(); return true;
-            case "0": return false;
-            default: Console.WriteLine("Unknown command."); return true;
+            case "1":
+                Register();
+                return true;
+            case "2":
+                Login();
+                return true;
+            case "0":
+                return false;
+            default:
+                Console.WriteLine("Unknown command.");
+                return true;
         }
     }
 
@@ -63,39 +73,65 @@ public class ConsoleMenu
 
         switch (Console.ReadLine())
         {
-            case "1": Add(); return true;
-            case "2": List(); return true;
-            case "3": Delete(); return true;
-            case "4": ShowTotal(); return true;
-            case "5": currentUser = null; Console.WriteLine("Signed out."); return true;
-            case "0": return false;
-            default: Console.WriteLine("Unknown command."); return true;
+            case "1":
+                Add();
+                return true;
+            case "2":
+                List();
+                return true;
+            case "3":
+                Delete();
+                return true;
+            case "4":
+                ShowTotal();
+                return true;
+            case "5":
+                currentUser = null;
+                Console.WriteLine("Signed out.");
+                return true;
+            case "0":
+                return false;
+            default:
+                Console.WriteLine("Unknown command.");
+                return true;
         }
     }
 
     private void Register()
     {
-        Console.Write("Username: "); string? username = Console.ReadLine();
-        Console.Write("Password: "); string? password = Console.ReadLine();
-        Console.WriteLine(authService.Register(username, password, out string message) ? message : "Registration failed: " + message);
+        Console.Write("Username: ");
+        string? username = Console.ReadLine();
+        Console.Write("Password: ");
+        string? password = Console.ReadLine();
+
+        bool registered = authService.Register(username, password, out string message);
+        Console.WriteLine(registered ? message : "Registration failed: " + message);
     }
 
     private void Login()
     {
-        Console.Write("Username: "); string? username = Console.ReadLine();
-        Console.Write("Password: "); string? password = Console.ReadLine();
+        Console.Write("Username: ");
+        string? username = Console.ReadLine();
+        Console.Write("Password: ");
+        string? password = Console.ReadLine();
+
         currentUser = authService.Login(username, password, out string message);
         Console.WriteLine(message);
     }
 
     private void Add()
     {
-        Console.Write("Name: "); string? name = Console.ReadLine();
-        Console.Write("Amount: "); string? raw = Console.ReadLine();
-        Console.Write("Category: "); string? category = Console.ReadLine();
+        Console.Write("Name: ");
+        string? name = Console.ReadLine();
+        Console.Write("Amount: ");
+        string? raw = Console.ReadLine();
+        Console.Write("Category: ");
+        string? category = Console.ReadLine();
+
         if (!decimal.TryParse(raw, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal amount))
         {
-            Console.WriteLine("Use a decimal number such as 12.50."); return;
+            Console.WriteLine("Use a decimal number such as 12.50.");
+            return;
         }
 
         expenseService.AddForUser(currentUser, name, amount, category, out string message);
@@ -105,16 +141,33 @@ public class ConsoleMenu
     private void List()
     {
         IReadOnlyList<Expense> mine = expenseService.GetMine(currentUser!);
-        if (mine.Count == 0) { Console.WriteLine("You have no expenses yet."); return; }
+
+        if (mine.Count == 0)
+        {
+            Console.WriteLine("You have no expenses yet.");
+            return;
+        }
+
         foreach (Expense expense in mine)
-            Console.WriteLine(expense.Id + ": " + expense.Name + " | " + expense.Amount.ToString("F2", CultureInfo.InvariantCulture) + " | " + expense.Category);
+        {
+            string line = $"{expense.Id}: {expense.Name} | " +
+                $"{expense.Amount.ToString("F2", CultureInfo.InvariantCulture)} | {expense.Category}";
+            Console.WriteLine(line);
+        }
     }
 
     private void Delete()
     {
         Console.Write("Id: ");
-        if (!int.TryParse(Console.ReadLine(), out int id)) { Console.WriteLine("Id must be an integer."); return; }
-        Console.WriteLine(expenseService.DeleteMine(currentUser!, id) ? "Deleted." : "Not found in your account.");
+
+        if (!int.TryParse(Console.ReadLine(), out int id))
+        {
+            Console.WriteLine("Id must be an integer.");
+            return;
+        }
+
+        bool deleted = expenseService.DeleteMine(currentUser!, id);
+        Console.WriteLine(deleted ? "Deleted." : "Not found in your account.");
     }
 
     private void ShowTotal()

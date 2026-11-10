@@ -24,12 +24,12 @@ public sealed class EfExpenseReader : IExpenseReader
             .ToListAsync();
     }
 
-	public Task<List<Expense>> GetWithoutRelationsForUserAsync(int userId)
-	{
-		return context.Expenses
-			.AsNoTracking()
-			.Where(expense => expense.UserId == userId)
-			.OrderBy(expense => expense.Id)
-			.ToListAsync();
-	}
+    public Task<List<Expense>> GetWithoutRelationsForUserAsync(int userId)
+    {
+        return context.Expenses
+            .AsNoTracking()
+            .Where(expense => expense.UserId == userId)
+            .OrderBy(expense => expense.Id)
+            .ToListAsync();
+    }
 }

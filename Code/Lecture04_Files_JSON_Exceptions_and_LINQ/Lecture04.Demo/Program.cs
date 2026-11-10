@@ -275,5 +275,7 @@ void PrintResults(List<Dictionary<string, string>> results)
 
 void PrintExpense(int number, Dictionary<string, string> expense)
 {
-    Console.WriteLine(number + ". " + expense["name"] + " - " + expense["amount"] + " EUR - " + expense["category"] + " - " + expense["createdAt"]);
+    string firstPart = $"{number}. {expense["name"]} - {expense["amount"]} EUR";
+    string secondPart = $"{expense["category"]} - {expense["createdAt"]}";
+    Console.WriteLine(firstPart + " - " + secondPart);
 }

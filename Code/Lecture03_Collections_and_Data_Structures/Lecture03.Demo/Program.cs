@@ -107,7 +107,9 @@ void ListExpenses(List<string> names, List<decimal> amounts, List<string> catego
     for (int index = 0; index < names.Count; index++)
     {
         int displayNumber = index + 1;
-        Console.WriteLine(displayNumber + ". " + names[index] + " - " + amounts[index].ToString("F2", CultureInfo.InvariantCulture) + " EUR - " + categories[index]);
+        string amountText = amounts[index].ToString("F2", CultureInfo.InvariantCulture);
+        string line = $"{displayNumber}. {names[index]} - {amountText} EUR - {categories[index]}";
+        Console.WriteLine(line);
     }
 }
 
@@ -123,7 +125,9 @@ void FindExpense(List<string> names, List<decimal> amounts, List<string> categor
         if (names[index].ToLowerInvariant().Contains(searchName.ToLowerInvariant()))
         {
             int displayNumber = index + 1;
-            Console.WriteLine(displayNumber + ". " + names[index] + " - " + amounts[index].ToString("F2", CultureInfo.InvariantCulture) + " EUR - " + categories[index]);
+            string amountText = amounts[index].ToString("F2", CultureInfo.InvariantCulture);
+        string line = $"{displayNumber}. {names[index]} - {amountText} EUR - {categories[index]}";
+        Console.WriteLine(line);
             found = true;
         }
     }
