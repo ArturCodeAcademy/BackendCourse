@@ -1,5 +1,5 @@
 using Lecture13.Application;
-using Lecture13.Presentation.Contracts;
+using Lecture13.Presentation.Dtos;
 using Lecture13.Presentation.Mappings;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,21 +19,21 @@ public sealed class ExpensesController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(IReadOnlyList<ExpenseResponse>), StatusCodes.Status200OK)]
-    public ActionResult<IReadOnlyList<ExpenseResponse>> GetAll(int userId)
+    [ProducesResponseType(typeof(IReadOnlyList<ExpenseResponseDto>), StatusCodes.Status200OK)]
+    public ActionResult<IReadOnlyList<ExpenseResponseDto>> GetAll(int userId)
     {
         var response = expenseService
             .GetForUser(userId)
-            .Select(ExpenseResponseMapper.FromEntity)
+            .Select(ExpenseDtoMapper.FromEntity)
             .ToList();
 
         return Ok(response);
     }
 
     [HttpGet("{expenseId:int}")]
-    [ProducesResponseType(typeof(ExpenseResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ExpenseResponseDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult<ExpenseResponse> GetById(int userId, int expenseId)
+    public ActionResult<ExpenseResponseDto> GetById(int userId, int expenseId)
     {
         var expense = expenseService.Get(userId, expenseId);
 
@@ -42,19 +42,21 @@ public sealed class ExpensesController : ControllerBase
             return NotFound();
         }
 
-        return Ok(ExpenseResponseMapper.FromEntity(expense));
+        return Ok(ExpenseDtoMapper.FromEntity(expense));
     }
 
     [HttpPost]
     [Consumes("application/json")]
-    [ProducesResponseType(typeof(ExpenseResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ExpenseResponseDto), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-    public ActionResult<ExpenseResponse> Create(int userId, [FromBody] CreateExpenseRequest request)
+    public ActionResult<ExpenseResponseDto> Create(
+        int userId,
+        [FromBody] CreateExpenseRequestDto request)
     {
         try
         {
             var expense = expenseService.Create(userId, request.Name, request.Amount, request.Category);
-            var response = ExpenseResponseMapper.FromEntity(expense);
+            var response = ExpenseDtoMapper.FromEntity(expense);
 
             return CreatedAtAction(nameof(GetById), new { userId, expenseId = expense.Id }, response);
         }

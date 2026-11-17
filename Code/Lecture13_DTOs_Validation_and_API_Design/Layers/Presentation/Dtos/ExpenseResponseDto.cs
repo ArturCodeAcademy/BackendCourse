@@ -1,6 +1,6 @@
-namespace Lecture13.Presentation.Contracts;
+namespace Lecture13.Presentation.Dtos;
 
-public record ExpenseResponse(
+public record ExpenseResponseDto(
     int Id,
     string Name,
     decimal Amount,

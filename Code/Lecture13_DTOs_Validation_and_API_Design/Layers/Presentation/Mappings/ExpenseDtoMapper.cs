@@ -1,13 +1,13 @@
 using Lecture13.Domain;
-using Lecture13.Presentation.Contracts;
+using Lecture13.Presentation.Dtos;
 
 namespace Lecture13.Presentation.Mappings;
 
-public static class ExpenseResponseMapper
+public static class ExpenseDtoMapper
 {
-    public static ExpenseResponse FromEntity(Expense expense)
+    public static ExpenseResponseDto FromEntity(Expense expense)
     {
-        return new ExpenseResponse(
+        return new ExpenseResponseDto(
             expense.Id,
             expense.Name,
             expense.Amount,

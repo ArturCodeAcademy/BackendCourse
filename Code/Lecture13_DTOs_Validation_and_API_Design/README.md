@@ -4,7 +4,7 @@
 
 An entity describes internal data and persistence. An API response is a public contract. DTOs deliberately choose which fields a client can send and receive.
 
-`ExpenseResponse` excludes `UserId`; the route identifies the user scope. `CreateExpenseRequest` contains only fields that a client may create.
+`ExpenseResponseDto` excludes `UserId`; the route identifies the user scope. `CreateExpenseRequestDto` contains only fields that a client may create.
 
 ## Validation layers
 
@@ -26,8 +26,8 @@ A client can bypass a browser form, so server-side validation is mandatory.
 
 Run the project in the Development environment and open `/swagger`. Swagger UI displays the API routes and the generated schemas:
 
-- `CreateExpenseRequest` is the request-body schema for `POST`.
-- `ExpenseResponse` is the response schema. It deliberately excludes `UserId`.
+- `CreateExpenseRequestDto` is the request-body schema for `POST`.
+- `ExpenseResponseDto` is the response schema. It deliberately excludes `UserId`.
 - `ValidationProblemDetails` documents the validation-error response.
 
 The browser starts on `/swagger`; `/openapi/v1.json` exposes the same contract as a machine-readable OpenAPI document.

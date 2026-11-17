@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Lecture13.Presentation.Contracts;
+namespace Lecture13.Presentation.Dtos;
 
-public class CreateExpenseRequest
+public class CreateExpenseRequestDto
 {
     [Required]
     [StringLength(100, MinimumLength = 2)]
