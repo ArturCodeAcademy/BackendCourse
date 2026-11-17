@@ -22,6 +22,15 @@ A client can bypass a browser form, so server-side validation is mandatory.
 | GET | `/api/users/{userId}/expenses/{expenseId}` | 200 | 404 when the expense is absent or belongs to another user |
 | POST | `/api/users/{userId}/expenses` | 201 with a working `Location` header | 400 for invalid input |
 
+## Swagger UI and schemas
+
+Run the project in the Development environment and open `/swagger`. Swagger UI displays the API routes and the generated schemas:
+
+- `CreateExpenseRequest` is the request-body schema for `POST`.
+- `ExpenseResponse` is the response schema. It deliberately excludes `UserId`.
+- `ValidationProblemDetails` documents the validation-error response.
+
+The browser starts on `/swagger`; `/openapi/v1.json` exposes the same contract as a machine-readable OpenAPI document.
 ## Controller structure
 
 `Presentation/Controllers/ExpensesController.cs` is the HTTP entry point. Its attributes define the contract:

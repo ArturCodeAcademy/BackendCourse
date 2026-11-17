@@ -9,4 +9,9 @@
     <ProjectReference Include="..\Layers\Infrastructure\Lecture13.Infrastructure.csproj" />
     <ProjectReference Include="..\Layers\Presentation\Lecture13.Presentation.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.14" />
+    <PackageReference Include="NSwag.AspNetCore" Version="14.7.1" />
+  </ItemGroup>
 </Project>
